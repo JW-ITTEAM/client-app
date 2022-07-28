@@ -246,14 +246,12 @@ class Navbar extends Component {
                 >
                   <div className="preview-thumbnail">
                     <div className="preview-icon bg-dark rounded-circle">
-                      <i className="mdi mdi-calendar text-success"></i>
+                      <i className="mdi mdi-calendar text-danger"></i>
                     </div>
                   </div>
                   <div className="preview-item-content">
-                    <p className="preview-subject mb-1">Event today</p>
-                    <p className="text-muted ellipsis mb-0">
-                      Just a reminder that you have an event today
-                    </p>
+                    <p className="preview-subject mb-1">Settings</p>
+                    <p className="text-muted ellipsis mb-0">Update dashboard</p>
                   </div>
                 </Dropdown.Item>
                 <Dropdown.Divider />
@@ -263,22 +261,86 @@ class Navbar extends Component {
                 >
                   <div className="preview-thumbnail">
                     <div className="preview-icon bg-dark rounded-circle">
-                      <i className="mdi mdi-calendar text-success"></i>
+                      <i className="mdi mdi-link-variant text-warning"></i>
                     </div>
                   </div>
                   <div className="preview-item-content">
-                    <p className="preview-subject mb-1">Event today</p>
-                    <p className="text-muted ellipsis mb-0">
-                      Just a reminder that you have an event today
-                    </p>
+                    <p className="preview-subject mb-1">Launch Admin</p>
+                    <p className="text-muted ellipsis mb-0">New admin wow</p>
                   </div>
                 </Dropdown.Item>
+                <Dropdown.Divider />
+                <p className="p-3 mb-0 text-center">See all notifications</p>
               </Dropdown.Menu>
             </Dropdown>
             {/* Bell Button */}
             {/* Nav Topbar Buttons */}
+
+            {/* Nav Topbar Profile */}
+            <Dropdown alignRight as="li" className="nav-item">
+              <Dropdown.Toggle
+                as="a"
+                className="nav-link cursor-pointer no-caret"
+              >
+                <div className="navbar-profile">
+                  <img
+                    className="img-xs rounded-circle"
+                    src={require("../../assets/images/faces/face15.jpg")}
+                    alt="profile"
+                  />
+                  <p className="mb-0 d-none d-sm-block navbar-profile-name">
+                    Henry Klein
+                  </p>
+                  <i className="mdi mdi-menu-down d-none d-sm-block"></i>
+                </div>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="navbar-dropdown preview-list navbar-profile-dropdown-menu">
+                <h6 className="p-3 mb-0">Profile</h6>
+                <Dropdown.Divider />
+                <Dropdown.Item
+                  href="!#"
+                  onClick={(evt) => evt.preventDefault()}
+                  className="preview-item"
+                >
+                  <div className="preview-thumbnail">
+                    <div className="preview-icon bg-dark rounded-circle">
+                      <i className="mdi mdi-settings text-success"></i>
+                    </div>
+                  </div>
+                  <div className="preview-item-content">
+                    <p className="preview-subject mb-1">Settings</p>
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item
+                  href="!#"
+                  onClick={(evt) => evt.preventDefault()}
+                  className="preview-item"
+                >
+                  <div className="preview-thumbnail">
+                    <div className="preview-icon bg-dark rounded-circle">
+                      <i className="mdi mdi-logout text-danger"></i>
+                    </div>
+                  </div>
+                  <div className="preview-item-content">
+                    <p className="preview-subject mb-1">Log out</p>
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <p className="p-3 mb-0 text-center">Advanced settings</p>
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* Nav Topbar Profile */}
           </ul>
           {/* Nav Topbar Right */}
+
+          <button
+            className="navbar-togger navbar-toggler-right d-lg-none align-self-center"
+            type="button"
+            onClick={this.toggleOffcanvas}
+          >
+            <span className="mdi mdi-format-line-spacing"></span>
+          </button>
         </div>
       </nav>
     );
