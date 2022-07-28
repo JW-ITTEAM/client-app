@@ -1,76 +1,35 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import axios from "axios";
-import { Button, Spinner } from "@blueprintjs/core";
+import React, { Component } from "react";
+import Navbar from "./pages/shared/Navbar";
+import "./App.scss";
 
-function App() {
-  const [weathers, setWeathers] = useState([]);
+// function App() {
+//   return <div>test</div>;
+// }
+// export default App;
 
-  useEffect(() => {
-    axios.get("https://localhost:7266/WeatherForecast").then((response) => {
-      console.log(response);
-      setWeathers(response.data);
-    });
-  }, []);
+class App extends Component {
+  state = {};
 
-  const mySpinner = <Spinner intent="primary" />;
-  const myButton = React.createElement(Button, { intent: "success" }, "Submit");
-
-  return (
-    <div className="App">
-      <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-        <p className="text-3xl text-gray-700 font-bold mb-5">Welcome!</p>
-        <p className="text-gray-500 text-lg">
-          React and Tailwind CSS in action
-        </p>
-      </div>
-      <header className="App-header">
-        <ul>
-          {weathers.map((weather: any) => (
-            <li key={weather.date}>
-              <div>Date : {weather.date}</div>
-              <div>TemperatureC : {weather.temperatureC}</div>
-              <div>TemperatureF : {weather.temperatureF}</div>
-              <div>Summary : {weather.summary}</div>
-            </li>
-          ))}
-        </ul>
-        <div>
-          {mySpinner}
-          {myButton}
+  render(): React.ReactNode {
+    let navbarComponent = <Navbar />;
+    return (
+      <div className="container-scroller">
+        SidebarComponent
+        <div className="container-fluid page-body-wrapper">
+          {navbarComponent}
         </div>
-      </header>
-      <div className="container lg">Hello World</div>
-      <div>
-        <table className="table-auto border-collapse border border-spacing-2">
-          <thead>
-            <tr>
-              <th>Song</th>
-              <th>Artist</th>
-              <th>Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-              <td>Malcolm Lockyer</td>
-              <td>1961</td>
-            </tr>
-            <tr>
-              <td>Witchy Woman</td>
-              <td>The Eagles</td>
-              <td>1972</td>
-            </tr>
-            <tr>
-              <td>Shining Star</td>
-              <td>Earth, Wind, and Fire</td>
-              <td>1975</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="main-panel">
+          <div className="content-warpper">AppRoutes</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  onRouteChange() {
+    console.log("ROUTE CHANGED");
+    // const { i18n } = this.props;
+    const body = document.querySelector("body");
+  }
 }
 
 export default App;
