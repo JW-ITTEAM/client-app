@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Navbar from "./pages/shared/Navbar";
 import "./App.scss";
 
-// function App() {
-//   return <div>test</div>;
-// }
-// export default App;
-
 class App extends Component {
   state = {};
 

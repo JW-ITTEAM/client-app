@@ -335,7 +335,7 @@ class Navbar extends Component {
           {/* Nav Topbar Right */}
 
           <button
-            className="navbar-togger navbar-toggler-right d-lg-none align-self-center"
+            className="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
             type="button"
             onClick={this.toggleOffcanvas}
           >
