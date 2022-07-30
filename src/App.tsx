@@ -1,29 +1,25 @@
 import React, { Component } from "react";
-import Navbar from "./pages/shared/Navbar";
 import "./App.scss";
+import Navbar from "./pages/shared/Navbar";
+import Sidebar from "./pages/shared/Sidebar";
 
 class App extends Component {
   state = {};
 
-  render(): React.ReactNode {
+  render() {
     let navbarComponent = <Navbar />;
+    let sidebarComponent = <Sidebar />;
     return (
       <div className="container-scroller">
-        SidebarComponent
+        {sidebarComponent}
         <div className="container-fluid page-body-wrapper">
           {navbarComponent}
-        </div>
-        <div className="main-panel">
-          <div className="content-warpper">AppRoutes</div>
+          <div className="main-panel">
+            <div className="content-warpper">AppRoutes</div>
+          </div>
         </div>
       </div>
     );
-  }
-
-  onRouteChange() {
-    console.log("ROUTE CHANGED");
-    // const { i18n } = this.props;
-    const body = document.querySelector("body");
   }
 }
 
