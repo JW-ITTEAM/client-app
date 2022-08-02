@@ -1,3 +1,5 @@
+import { mdiCog } from "@mdi/js";
+import Icon from "@mdi/react";
 import React, { Component } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,9 +8,9 @@ class Navbar extends Component {
   toggleOffcanvas() {
     document.querySelector(".sidebar-offcanvas")?.classList.toggle("active");
   }
-  toggleRightSidebar() {
-    document.querySelector(".right-sidebar")?.classList.toggle("open");
-  }
+  // toggleRightSidebar() {
+  //   document.querySelector(".right-sidebar")?.classList.toggle("open");
+  // }
 
   render() {
     return (
@@ -246,7 +248,11 @@ class Navbar extends Component {
                 >
                   <div className="preview-thumbnail">
                     <div className="preview-icon bg-dark rounded-circle">
-                      <i className="mdi mdi-calendar text-danger"></i>
+                      <Icon
+                        path={mdiCog}
+                        size={0.7}
+                        className="mdi mdi-settings text-danger"
+                      ></Icon>
                     </div>
                   </div>
                   <div className="preview-item-content">
@@ -304,7 +310,11 @@ class Navbar extends Component {
                 >
                   <div className="preview-thumbnail">
                     <div className="preview-icon bg-dark rounded-circle">
-                      <i className="mdi mdi-settings text-success"></i>
+                      <Icon
+                        path={mdiCog}
+                        size={0.7}
+                        className="mdi mdi-settings text-success"
+                      ></Icon>
                     </div>
                   </div>
                   <div className="preview-item-content">
