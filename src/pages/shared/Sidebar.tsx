@@ -143,8 +143,161 @@ class Sidebar extends Component<RouteComponentProps> {
           </li>
           {/* Dashboard */}
 
-          {/* Basic Ui Element */}
+          {/* Shipments */}
           <li
+            className={
+              this.isPathActive("/shipments")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <div
+              className={
+                this.state.basicUiMenuOpen
+                  ? "nav-link menu-expanded"
+                  : "nav-link"
+              }
+              onClick={() => this.toggleMenuState("basicUiMenuOpen")}
+              data-toggle="collapse"
+            >
+              <span className="menu-icon">
+                <i className="mdi mdi-ferry"></i>
+              </span>
+              <span className="menu-title">Shipments</span>
+              <Icon
+                path={mdiChevronDown}
+                title="menu-arrow"
+                size={0.7}
+                className="menu-arrow"
+              ></Icon>
+            </div>
+            <Collapse in={this.state.basicUiMenuOpen}>
+              <div>
+                <ul className="nav flex-column sub-menu">
+                  <li className="nav-item">
+                    <Link
+                      className={
+                        this.isPathActive("/shipments/oim")
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                      to="/shipments/oim"
+                    >
+                      Ocean Import
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={
+                        this.isPathActive("/shipments/oex")
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                      to="/shipments/oex"
+                    >
+                      Ocean Export
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={
+                        this.isPathActive("/shipments/aim")
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                      to="/shipments/aim"
+                    >
+                      Air Import
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={
+                        this.isPathActive("/shipments/aex")
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                      to="/shipments/aex"
+                    >
+                      Air Export
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </Collapse>
+          </li>
+          {/* Shipments */}
+
+          {/* Billing & Invoice */}
+          <li
+            className={
+              this.isPathActive("/invoice")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <Link className="nav-link" to="/invoice">
+              <span className="menu-icon">
+                <i className="mdi mdi-receipt-text"></i>
+              </span>
+              <span className="menu-title">Billing & Invoice</span>
+            </Link>
+          </li>
+          {/* Billing & Invoice */}
+
+          {/* Arrival */}
+          <li
+            className={
+              this.isPathActive("/arrival")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <Link className="nav-link" to="/arrival">
+              <span className="menu-icon">
+                <i className="mdi mdi-calendar-multiple-check"></i>
+              </span>
+              <span className="menu-title">Arrival</span>
+            </Link>
+          </li>
+          {/* Arrival */}
+
+          {/* Trucking */}
+          <li
+            className={
+              this.isPathActive("/trucking")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <Link className="nav-link" to="/trucking">
+              <span className="menu-icon">
+                <i className="mdi mdi-truck"></i>
+              </span>
+              <span className="menu-title">Trucking</span>
+            </Link>
+          </li>
+          {/* Trucking */}
+
+          {/* Admin */}
+          <li
+            className={
+              this.isPathActive("/admin")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <Link className="nav-link" to="/admin">
+              <span className="menu-icon">
+                <i className="mdi mdi-cog"></i>
+              </span>
+              <span className="menu-title">Admin</span>
+            </Link>
+          </li>
+          {/* Admin */}
+
+          {/* Basic Ui Element */}
+          {/* <li
             className={
               this.isPathActive("/basic-ui")
                 ? "nav-item menu-items active"
@@ -213,11 +366,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Basic Ui Element */}
 
           {/* Form Elements */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/form-elements")
                 ? "nav-item menu-items active"
@@ -262,11 +415,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Form Elements */}
 
           {/* Tables */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/tables")
                 ? "nav-item menu-items active"
@@ -311,11 +464,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Tables */}
 
           {/* Charts */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/charts")
                 ? "nav-item menu-items active"
@@ -360,11 +513,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Charts */}
 
           {/* Icons */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/icons")
                 ? "nav-item menu-items active"
@@ -407,11 +560,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Icons */}
 
           {/* User Pages */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/user-pages")
                 ? "nav-item menu-items active"
@@ -468,17 +621,17 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* User Pages */}
           {/* Navigation Menu */}
 
           {/* More Menu */}
-          <li className="nav-item nav-category">
+          {/* <li className="nav-item nav-category">
             <span className="nav-link">More</span>
-          </li>
+          </li> */}
 
           {/* Error Pages */}
-          <li
+          {/* <li
             className={
               this.isPathActive("/error-pages")
                 ? "nav-item menu-items active"
@@ -535,11 +688,11 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Error Pages */}
 
           {/* Documentation */}
-          <li className="nav-item menu-items">
+          {/* <li className="nav-item menu-items">
             <a
               className="nav-link"
               href="http://bootstrapdash.com/demo/corona-react-free/documentation/documentation.html"
@@ -551,7 +704,7 @@ class Sidebar extends Component<RouteComponentProps> {
               </span>
               <span className="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> */}
           {/* Documentation */}
           {/* More Menu */}
         </ul>

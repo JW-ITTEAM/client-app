@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./App.scss";
 import AppRoutes from "./AppRoutes";
 import Footer from "./pages/shared/Footer";
@@ -6,12 +6,13 @@ import Navbar from "./pages/shared/Navbar";
 import Sidebar from "./pages/shared/Sidebar";
 
 class App extends Component {
-  state = {};
+  state: any = {};
 
   render() {
-    let navbarComponent = <Navbar />;
-    let sidebarComponent = <Sidebar />;
-    let footerComponent = <Footer />;
+    console.log(this.props);
+    let navbarComponent = !this.state.isFullPageLayout ? <Navbar /> : "";
+    let sidebarComponent = !this.state.isFullPageLayout ? <Sidebar /> : "";
+    let footerComponent = !this.state.isFullPageLayout ? <Footer /> : "";
     return (
       <div className="container-scroller">
         {sidebarComponent}
@@ -26,6 +27,20 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+    this.onRouteChange();
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
+  onRouteChange() {
+    console.log("Route Changed");
+    const body = document.querySelector("body");
   }
 }
 
