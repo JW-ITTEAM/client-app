@@ -143,8 +143,25 @@ class Sidebar extends Component<RouteComponentProps> {
           </li>
           {/* Dashboard */}
 
-          {/* Shipments */}
+          {/* Shipment */}
           <li
+            className={
+              this.isPathActive("/shipments/intg_board/")
+                ? "nav-item menu-items active"
+                : "nav-item menu-items"
+            }
+          >
+            <Link className="nav-link" to="/shipments/intg_board/">
+              <span className="menu-icon">
+                <i className="mdi mdi-ferry"></i>
+              </span>
+              <span className="menu-title">Shipments</span>
+            </Link>
+          </li>
+          {/* Shipment */}
+
+          {/* Ocean Import */}
+          {/* <li
             className={
               this.isPathActive("/shipments")
                 ? "nav-item menu-items active"
@@ -225,7 +242,7 @@ class Sidebar extends Component<RouteComponentProps> {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           {/* Shipments */}
 
           {/* Billing & Invoice */}
