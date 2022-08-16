@@ -52,11 +52,10 @@ $theme-colors: (
 
 ////////// COLOR VARIABLES //////////
 // $content-bg: #000000;
-$content-bg: #f4f5f7;
+$content-bg: #000000;
 $footer-bg: $content-bg;
 $footer-color: color(dark);
-// $border-color: #2c2e33;
-$border-color: #a7c7f1;
+$border-color: #2c2e33;
 $circle-border: rgb(26, 57, 85);
 
 ////////// COLOR VARIABLES //////////
@@ -90,9 +89,8 @@ $font-weight-bold: 700;
 $default-font-size: 0.855rem; // 14px as base font size
 
 // $text-muted: #6c7293;
-// $text-muted: #b1b8dd;
-$text-muted: #302d2d;
-$body-color: #302d2d;
+$text-muted: #b1b8dd;
+$body-color: #ffffff;
 
 ////////// FONT VARIABLES //////////
 
@@ -107,8 +105,8 @@ $sidebar-width-lg: 244px;
 $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
 
-// $sidebar-bg: #191c24;
-$sidebar-bg: #b4cde7;
+$sidebar-bg: #191c24;
+// $sidebar-bg: #324c96;
 $sidebar-menu-color: $text-muted;
 $sidebar-menu-active-bg: darken($sidebar-bg, 5%);
 $sidebar-menu-active-color: #ffffff;
@@ -149,8 +147,8 @@ $icon-only-menu-bg: darken($sidebar-bg, 5%);
 
 $navbar-height: 70px;
 // $navbar-bg: #191c24;
-$navbar-bg: #f4f5f7;
-$navbar-menu-color: #302d2d;
+$navbar-bg: #191c24;
+$navbar-menu-color: #ffffff;
 $navbar-font-size: 0.9375rem;
 $navbar-icon-font-size: 1.125rem;
 $navbar-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
@@ -159,7 +157,7 @@ $navbar-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
 
 ///////// CARD ////////
 // $card-bg: #191c24;
-$card-bg: #e3effc;
+$card-bg: #191c24;
 $card-description-color: #bfbfbf;
 $card-title-color: #ffffff;
 ///////// CARD ////////
@@ -209,12 +207,10 @@ $popover-header-bg: $popover-bg;
 
 /////////  FORMS /////////
 
-// $input-bg: #2a3038;
-$input-bg: #ffffff;
+$input-bg: #2a3038;
 $input-border-radius: 2px;
 $input-border-color: $border-color;
-// $input-placeholder-color: lighten($input-bg, 15%);
-$input-placeholder-color: $text-muted;
+$input-placeholder-color: lighten($input-bg, 15%);
 $input-placeholder-font-size: 0.875rem;
 $input-font-size: 0.875rem;
 

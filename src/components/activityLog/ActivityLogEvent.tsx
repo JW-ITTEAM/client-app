@@ -62,7 +62,7 @@ export default function ActivityLogEvent(props: IActivityLogEventProps) {
             }}
           ></div>
           <div>
-            <div style={{ marginBottom: "3px", color: "rgb(172,197,217)" }}>
+            <div style={{ marginBottom: "3px", color: "rgb(3,84,115)" }}>
               {props.createdAt}
             </div>
             <div>{props.title}</div>

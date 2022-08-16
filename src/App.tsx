@@ -1,15 +1,16 @@
 import { Component } from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import "./App.scss";
 import AppRoutes from "./AppRoutes";
 import Footer from "./pages/shared/Footer";
 import Navbar from "./pages/shared/Navbar";
 import Sidebar from "./pages/shared/Sidebar";
 
-class App extends Component {
+class App extends Component<RouteComponentProps> {
   state: any = {};
 
   render() {
-    console.log(this.props);
+    console.log(this.props.location);
     let navbarComponent = !this.state.isFullPageLayout ? <Navbar /> : "";
     let sidebarComponent = !this.state.isFullPageLayout ? <Sidebar /> : "";
     let footerComponent = !this.state.isFullPageLayout ? <Footer /> : "";
@@ -31,17 +32,36 @@ class App extends Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    this.onRouteChange();
+    this.onRouteChanged();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: any) {
     console.log("componentDidUpdate");
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
   }
 
-  onRouteChange() {
+  onRouteChanged() {
     console.log("Route Changed");
-    const body = document.querySelector("body");
+    window.scrollTo(0, 0);
+    const fullPageLayoutRoutes = ["/login"];
+    for (let i = 0; i < fullPageLayoutRoutes.length; i++) {
+      if (this.props.location.pathname === fullPageLayoutRoutes[i]) {
+        this.setState({ isFullPageLayout: true });
+        document
+          .querySelector(".page-body-wrapper")
+          ?.classList.add("full-page-wrapper");
+      } else {
+        this.setState({
+          isFullPageLayout: false,
+        });
+        document
+          .querySelector(".page-body-wrapper")
+          ?.classList.remove("full-page-wrapper");
+      }
+    }
   }
 }
 
-export default App;
+export default withRouter(App);
