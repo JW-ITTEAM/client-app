@@ -80,7 +80,7 @@ class App extends Component<RouteComponentProps> {
       nProgress.inc();
       await setTimeout(() => {
         this.onRouteChanged();
-      }, 10000);
+      }, 500);
     }
   }
 
