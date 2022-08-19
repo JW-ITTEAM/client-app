@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useLocation } from "react-router-dom";
 import { ActivityLog } from "../../components/activityLog/ActivityLog";
 import ActivityLogEvent from "../../components/activityLog/ActivityLogEvent";
@@ -21,7 +20,7 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
       <div className="row mb-4">
         <div className="col-lg-6">
           <div className="card">
-            <div className="card-header">B/L</div>
+            <div className="card-header">MASTER</div>
             <div className="card-body">
               <table className="table">
                 <tbody>
@@ -32,20 +31,10 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>HOUSE B/L NO</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      SCVAVNNYC2208186
-                    </td>
-                  </tr>
-                  <tr>
                     <td colSpan={colspan_val}>SHIPPER</td>
                     <td colSpan={colspan_val} className="text-right">
-                      VIETNAM TASK APPAREL JOINT STOCK COMPANY
+                      SHIPPER NAME
                     </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>SHIPPER OF PRODUCT</td>
-                    <td colSpan={colspan_val}></td>
                   </tr>
                   <tr>
                     <td colSpan={colspan_val}>CONSIGNEE</td>
@@ -54,53 +43,15 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>CONSIGNEE OF PRODUCT</td>
+                    <td colSpan={colspan_val}>NOTIFY</td>
                     <td colSpan={colspan_val}></td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>CUSTOMER</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      SUPER CARGO SERVICE CO., LTD.
-                    </td>
+                    <td colSpan={colspan_val}>CARRIER</td>
+                    <td colSpan={colspan_val} className="text-right"></td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>NOTIFY PARTY</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      ONE STEP UP LTD
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>B/L ACCT CARRIER</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      WAN HAI (Z952)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>
-                      B/L NUMBER OF SHIPPER FORWARDING
-                    </td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>AMS/ISF NO</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      JWIC92443568295
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>CUSTOMER REF NO</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>VESSEL</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>VOYAGE NUMBER</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>CY LOCATION</td>
+                    <td colSpan={colspan_val}>ISSUE DATE</td>
                     <td colSpan={colspan_val}></td>
                   </tr>
                 </tbody>
@@ -110,73 +61,35 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
         </div>
         <div className="col-lg-6">
           <div className="card h-100">
-            <div className="card-header">CONTAINER</div>
+            <div className="card-header">HOUSE</div>
             <div className="card-body">
               <table className="table">
                 <tbody>
                   <tr>
-                    <td colSpan={colspan_val}>CONTAINER NO</td>
+                    <td colSpan={colspan_val}>HOUSE B/L NO</td>
                     <td colSpan={colspan_val} className="text-right">
                       WHSU5267547
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>SEAL NO</td>
-                    <td colSpan={colspan_val} className="text-right">
+                    <td style={{ width: "25%" }}>CUSTOMER</td>
+                    <td style={{ width: "25%" }} className="text-right">
                       WHLR354430
                     </td>
+                    <td>CUST REF NO.</td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>CONTAINER SIZE</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      40' HQ
-                    </td>
+                    <td>SHIPPER</td>
+                    <td className="text-right"></td>
+                    <td>CONSIGNEE</td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>PACKAGE</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>COMMODITY</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      GARMENTS
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>GROSS WEIGHT CARGO</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>TARE</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>MEASUREMENT</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>DELIVERY TYPE</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      CYCY
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>ISSUE DATE</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>FCL/LCL</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      FCL
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>FREE NOMI CO-LOAD</td>
-                    <td colSpan={colspan_val}></td>
-                  </tr>
-                  <tr>
-                    <td colSpan={colspan_val}>EXPRESS RELEASE</td>
-                    <td colSpan={colspan_val}></td>
+                    <td>NOTIFY</td>
+                    <td></td>
+                    <td>ISSUE DATE</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -187,10 +100,20 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
       <div className="row mb-4">
         <div className="col-lg-12">
           <div className="card h-100">
-            <div className="card-header">MOVING POINT</div>
+            <div className="card-header">SHIPPING</div>
             <div className="card-body">
               <table className="table">
                 <tbody>
+                  <tr>
+                    <td>VESSEL</td>
+                    <td></td>
+                    <td>BOOKING NO.</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colSpan={colspan_val}>VOYAGE</td>
+                    <td colSpan={colspan_val}></td>
+                  </tr>
                   <tr>
                     <td style={{ width: "25%" }}>PORT OF LOADING</td>
                     <td style={{ width: "25%" }} className="text-right">
@@ -206,10 +129,92 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
                     <td className="text-right">09-18-2022</td>
                   </tr>
                   <tr>
-                    <td>PLACE OF DELIVERY</td>
+                    <td>FINAL DELIVERY</td>
                     <td className="text-right">NEW YORK, NY</td>
-                    <td>DELIVERY ETA</td>
+                    <td>FINAL ETA</td>
                     <td className="text-right">09-18-2022</td>
+                  </tr>
+                  <tr>
+                    <td>DELIVERY TYPE</td>
+                    <td></td>
+                    <td>CY/CFS LOCATION</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colSpan={colspan_val}>RECEIPT OF PLACE</td>
+                    <td colSpan={colspan_val}></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mb-2">
+        <div className="col-lg-12">
+          <div className="card">
+            <div className="card-header">RAIL</div>
+            <div className="card-body">
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td style={{ width: "33.3%" }}>IT NO</td>
+                    <td></td>
+                    <td style={{ width: "33.3%" }}>IT PLACE</td>
+                    <td></td>
+                    <td style={{ width: "33.3%" }}>IT DATE</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mb-4">
+        <div className="col-lg-12">
+          <div className="card">
+            <div className="card-body">
+              <table className="table">
+                <tr>
+                  <td>FCL/LCL</td>
+                  <td></td>
+                  <td>FREE/NOMI/CO-LOAD</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>EXPRESS RELEASE</td>
+                  <td></td>
+                  <td>AMS/ISF NO.</td>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mb-4">
+        <div className="col-lg-12">
+          <div className="card">
+            <div className="card-header">CONTAINER</div>
+            <div className="card-body">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th>CONTAINER NO</th>
+                    <th>SEAL NO</th>
+                    <th>CONTAINER SIZE</th>
+                    <th>PACKAGE</th>
+                    <th>UNIT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12345</td>
+                    <td>1235</td>
+                    <td>40HQ</td>
+                    <td>20</td>
+                    <td>CNTS</td>
                   </tr>
                 </tbody>
               </table>
@@ -218,7 +223,15 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-6">
+          <div className="card h-100">
+            <div className="card-header">MEMO</div>
+            <div className="card-body">
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-6">
           <div className="card">
             <div className="card-header">ACTIVITY LOG</div>
             <div className="card-body">

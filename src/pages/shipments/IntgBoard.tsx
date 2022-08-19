@@ -1,7 +1,7 @@
-import axios from "axios";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import axiosConn from "../../utils/ApiConnection";
 
 export interface IIntgBoardProps {}
 
@@ -10,16 +10,12 @@ export default function IntgBoard(props: IIntgBoardProps) {
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get("https://localhost:7077/api/Shipments/getOceanImportList")
-      .then((response) => {
-        console.log(response);
-        setOims(response.data);
-      });
+    axiosConn.get("/api/Shipments/getOceanImportList").then((response) => {
+      setOims(response.data);
+    });
   }, []);
 
   const fetchDetail = (refNo: string) => {
-    console.log("fetchDetail");
     // setIsLoading(true);
     history.push({
       pathname: "/shipments/intg_ocean_detail/" + refNo,
