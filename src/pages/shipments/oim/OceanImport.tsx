@@ -15,14 +15,13 @@ export default function OceanImport(props: IOceanImportProps) {
     axios
       .get("https://localhost:7077/api/Shipments/getOceanImportList")
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setOims(response.data);
       });
   }, []);
 
   const fetchDetail = (refNo: string) => {
-    console.log("fetchDetail");
-    // setIsLoading(true);
+    // console.log("fetchDetail");
     history.push({
       pathname: "/shipments/oim_detail/" + refNo,
       state: { refNo: refNo },

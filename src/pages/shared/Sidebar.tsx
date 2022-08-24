@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
-import logoSvg from "../../assets/images/logo.svg";
-import miniLogoSvg from "../../assets/images/logo-mini.svg";
 import { Collapse, Dropdown } from "react-bootstrap";
 import { mdiChevronDown, mdiCog } from "@mdi/js";
 import Icon from "@mdi/react";
@@ -30,10 +28,16 @@ class Sidebar extends Component<RouteComponentProps> {
         {/* Main Logo in Sidebar */}
         <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           <a className="sidebar-brand brand-logo" href="index.html">
-            <img src={logoSvg} alt="logo" />
+            <img
+              src={require("./../../assets/images/logo_image/logo-90degree.png")}
+              alt="logo"
+            />
           </a>
           <a className="sidebar-brand brand-logo-mini" href="index.html">
-            <img src={miniLogoSvg} alt="logo" />
+            <img
+              src={require("./../../assets/images/logo_image/J_Logo.png")}
+              alt="logo"
+            />
           </a>
         </div>
         {/* Main Logo in Sidebar */}

@@ -13,7 +13,6 @@ class App extends Component<RouteComponentProps> {
   state: any = {};
 
   render() {
-    console.log(this.props.location);
     let navbarComponent = !this.state.isFullPageLayout ? <Navbar /> : "";
     let sidebarComponent = !this.state.isFullPageLayout ? <Sidebar /> : "";
     let footerComponent = !this.state.isFullPageLayout ? <Footer /> : "";
@@ -78,9 +77,13 @@ class App extends Component<RouteComponentProps> {
     if (this.props.location !== prevProps.location) {
       this.setState({ isLoading: true });
       nProgress.inc();
-      await setTimeout(() => {
+      if (true) {
+        await setTimeout(() => {
+          this.onRouteChanged();
+        }, 100);
+      } else {
         this.onRouteChanged();
-      }, 500);
+      }
     }
   }
 

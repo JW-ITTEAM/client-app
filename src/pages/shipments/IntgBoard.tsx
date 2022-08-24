@@ -15,11 +15,10 @@ export default function IntgBoard(props: IIntgBoardProps) {
     });
   }, []);
 
-  const fetchDetail = (refNo: string) => {
-    // setIsLoading(true);
+  const fetchDetail = (RMH_Id: string) => {
     history.push({
-      pathname: "/shipments/intg_ocean_detail/" + refNo,
-      state: { refNo: refNo },
+      pathname: "/shipments/intg_ocean_detail/" + RMH_Id,
+      state: { RMH_Id: RMH_Id },
     });
   };
 
@@ -39,6 +38,7 @@ export default function IntgBoard(props: IIntgBoardProps) {
             <div className="row mb-1">
               <div className="col-lg-4">
                 <select className="form-control">
+                  <option>ALL SHIPMENTS</option>
                   <option>OCEAN</option>
                   <option>AIR</option>
                 </select>
@@ -74,18 +74,19 @@ export default function IntgBoard(props: IIntgBoardProps) {
                   <tbody>
                     {oims.map((data: any) => (
                       <tr
-                        key={data.oim.f_RefNo}
-                        onClick={() => fetchDetail(`${data.oim.f_RefNo}`)}
+                        key={data.f_RMH_ID}
+                        onClick={() => fetchDetail(`${data.f_RMH_ID}`)}
                         style={{ cursor: "pointer" }}
                       >
-                        <td>{data.oim?.f_RefNo ?? ""}</td>
-                        <td>{data.oim?.f_MBLNo ?? ""}</td>
-                        <td>{data.oih?.f_HBLNo ?? ""}</td>
+                        {/* <td>{data.f_RMH_ID}</td> */}
+                        <td>{data.f_RefNo ?? ""}</td>
+                        <td>{data.f_MBLNo ?? ""}</td>
+                        <td>{data.f_HBLNo ?? ""}</td>
                         <td></td>
-                        <td>{data.oim?.f_LoadingPort ?? ""}</td>
+                        <td>{data.f_LoadingPort ?? ""}</td>
                         <td></td>
-                        <td>{data.oim?.f_ETD ?? ""}</td>
-                        <td>{data.oim?.f_ETA ?? ""}</td>
+                        <td>{data.f_ETD ?? ""}</td>
+                        <td>{data.f_ETA ?? ""}</td>
                         <td></td>
                         <td></td>
                       </tr>

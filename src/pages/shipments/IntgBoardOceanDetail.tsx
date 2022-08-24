@@ -1,12 +1,29 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ActivityLog } from "../../components/activityLog/ActivityLog";
 import ActivityLogEvent from "../../components/activityLog/ActivityLogEvent";
+import axiosConn from "../../utils/ApiConnection";
 
 export interface IIntgBoardOceanDetailProps {}
 
 export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
+  const [data, setData]: any = useState();
   const location: any = useLocation();
   const colspan_val = 2;
+
+  useEffect(() => {
+    axiosConn
+      .get(
+        "/api/Shipments/getOceanImportDetail/" +
+          encodeURIComponent(location.state.RMH_Id)
+      )
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
+  }, []);
+
+  if (!data) return <></>;
   return (
     <div>
       <div className="page-header">
@@ -14,45 +31,56 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
           className="page-title"
           style={{ marginTop: "11px", marginBottom: "11px" }}
         >
-          {location.state.refNo}
+          {data.f_RefNo}
         </h3>
       </div>
       <div className="row mb-4">
         <div className="col-lg-6">
           <div className="card">
-            <div className="card-header">MASTER</div>
+            <div className="card-header">
+              <div className="row">
+                <div className="col-md-6">MASTER</div>
+                <div className="col-md-6 text-right">{data.f_MBLNo}</div>
+              </div>
+            </div>
             <div className="card-body">
               <table className="table">
                 <tbody>
-                  <tr>
+                  {/* <tr>
                     <td colSpan={colspan_val}>MASTER B/L NO</td>
                     <td colSpan={colspan_val} className="text-right">
-                      WHLC040CA05217
+                      {data.f_MBLNo}
                     </td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <td colSpan={colspan_val}>SHIPPER</td>
                     <td colSpan={colspan_val} className="text-right">
-                      SHIPPER NAME
+                      {data.f_M_SName}
                     </td>
                   </tr>
                   <tr>
                     <td colSpan={colspan_val}>CONSIGNEE</td>
                     <td colSpan={colspan_val} className="text-right">
-                      PT MERIDIAN GLOBAL INDONESIA
+                      {data.f_M_CName}
                     </td>
                   </tr>
                   <tr>
                     <td colSpan={colspan_val}>NOTIFY</td>
-                    <td colSpan={colspan_val}></td>
+                    <td colSpan={colspan_val} className="text-right">
+                      {data.f_M_NName}
+                    </td>
                   </tr>
                   <tr>
                     <td colSpan={colspan_val}>CARRIER</td>
-                    <td colSpan={colspan_val} className="text-right"></td>
+                    <td colSpan={colspan_val} className="text-right">
+                      {data.f_CarrierName}
+                    </td>
                   </tr>
                   <tr>
                     <td colSpan={colspan_val}>ISSUE DATE</td>
-                    <td colSpan={colspan_val}></td>
+                    <td colSpan={colspan_val} className="text-right">
+                      {data.f_M_PostDate}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -61,35 +89,40 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
         </div>
         <div className="col-lg-6">
           <div className="card h-100">
-            <div className="card-header">HOUSE</div>
+            <div className="card-header">
+              <div className="row">
+                <div className="col-md-6">HOUSE</div>
+                <div className="col-md-6 text-right">{data.f_HBLNo}</div>
+              </div>
+            </div>
             <div className="card-body">
               <table className="table">
                 <tbody>
-                  <tr>
+                  {/* <tr>
                     <td colSpan={colspan_val}>HOUSE B/L NO</td>
                     <td colSpan={colspan_val} className="text-right">
-                      WHSU5267547
+                      {data.f_HBLNo}
                     </td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <td style={{ width: "25%" }}>CUSTOMER</td>
                     <td style={{ width: "25%" }} className="text-right">
-                      WHLR354430
+                      {data.f_Customer}
                     </td>
                     <td>CUST REF NO.</td>
-                    <td></td>
+                    <td>{data.f_CustRefNo}</td>
                   </tr>
                   <tr>
                     <td>SHIPPER</td>
-                    <td className="text-right"></td>
+                    <td className="text-right">{data.f_H_SName}</td>
                     <td>CONSIGNEE</td>
-                    <td></td>
+                    <td>{data.f_H_CName}</td>
                   </tr>
                   <tr>
                     <td>NOTIFY</td>
-                    <td></td>
+                    <td className="text-right">{data.f_H_NName}</td>
                     <td>ISSUE DATE</td>
-                    <td></td>
+                    <td>{data.f_H_PostDate}</td>
                   </tr>
                 </tbody>
               </table>
@@ -106,43 +139,47 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
                 <tbody>
                   <tr>
                     <td>VESSEL</td>
-                    <td></td>
+                    <td className="text-right">{data.f_Vessel}</td>
                     <td>BOOKING NO.</td>
-                    <td></td>
+                    <td className="text-right">{data.f_BookingNo}</td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>VOYAGE</td>
-                    <td colSpan={colspan_val}></td>
+                    <td>VOYAGE</td>
+                    <td className="text-right">{data.f_Voyage}</td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td style={{ width: "25%" }}>PORT OF LOADING</td>
                     <td style={{ width: "25%" }} className="text-right">
-                      SHEKOU, CHINA
+                      {data.f_LoadingPort}
                     </td>
                     <td>ETD</td>
-                    <td className="text-right">08-18-2022</td>
+                    <td className="text-right">{data.f_ETD}</td>
                   </tr>
                   <tr>
                     <td>PORT OF DISCHARGE</td>
-                    <td className="text-right">NEW YORK, NY</td>
+                    <td className="text-right">{data.f_DisCharge}</td>
                     <td>ETA</td>
-                    <td className="text-right">09-18-2022</td>
+                    <td className="text-right">{data.f_ETA}</td>
                   </tr>
                   <tr>
                     <td>FINAL DELIVERY</td>
-                    <td className="text-right">NEW YORK, NY</td>
+                    <td className="text-right">{data.f_FinalDelivery}</td>
                     <td>FINAL ETA</td>
-                    <td className="text-right">09-18-2022</td>
+                    <td className="text-right">{data.f_FETA}</td>
                   </tr>
                   <tr>
                     <td>DELIVERY TYPE</td>
-                    <td></td>
-                    <td>CY/CFS LOCATION</td>
-                    <td></td>
+                    <td className="text-right">{data.f_MoveType}</td>
+                    <td>RECEIPT OF PLACE</td>
+                    <td className="text-right">{data.f_PaidPlace}</td>
                   </tr>
                   <tr>
-                    <td colSpan={colspan_val}>RECEIPT OF PLACE</td>
-                    <td colSpan={colspan_val}></td>
+                    <td>CY LOCATION</td>
+                    <td className="text-right">{data.f_CYLocation}</td>
+                    <td>CFS LOCATION</td>
+                    <td className="text-right">{data.f_CFSLocation}</td>
                   </tr>
                 </tbody>
               </table>
@@ -158,12 +195,18 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
               <table className="table">
                 <tbody>
                   <tr>
-                    <td style={{ width: "33.3%" }}>IT NO</td>
-                    <td></td>
-                    <td style={{ width: "33.3%" }}>IT PLACE</td>
-                    <td></td>
-                    <td style={{ width: "33.3%" }}>IT DATE</td>
-                    <td></td>
+                    <td style={{ width: "16.6%" }}>IT NO</td>
+                    <td style={{ width: "16.6%" }} className="text-right">
+                      {data.f_ITNo}
+                    </td>
+                    <td style={{ width: "16.6%" }}>IT PLACE</td>
+                    <td style={{ width: "16.6%" }} className="text-right">
+                      {data.f_ITPlace}
+                    </td>
+                    <td style={{ width: "16.6%" }}>IT DATE</td>
+                    <td style={{ width: "16.6%" }} className="text-right">
+                      {data.f_ITDate}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -176,18 +219,24 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
           <div className="card">
             <div className="card-body">
               <table className="table">
-                <tr>
-                  <td>FCL/LCL</td>
-                  <td></td>
-                  <td>FREE/NOMI/CO-LOAD</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>EXPRESS RELEASE</td>
-                  <td></td>
-                  <td>AMS/ISF NO.</td>
-                  <td></td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td style={{ width: "25%" }}>FCL/LCL</td>
+                    <td style={{ width: "25%" }} className="text-right">
+                      {data.f_LCLFCL}
+                    </td>
+                    <td style={{ width: "25%" }}>FREE/NOMI/CO-LOAD</td>
+                    <td style={{ width: "25%" }} className="text-right">
+                      {data.f_Nomi}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EXPRESS RELEASE</td>
+                    <td className="text-right">{data.f_ExpRLS}</td>
+                    <td>AMS/ISF NO.</td>
+                    <td className="text-right">{data.f_AMSBLNO}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -227,7 +276,12 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
           <div className="card h-100">
             <div className="card-header">MEMO</div>
             <div className="card-body">
-              <div></div>
+              <div>
+                <textarea
+                  className="form-control"
+                  style={{ height: "292px" }}
+                ></textarea>
+              </div>
             </div>
           </div>
         </div>
