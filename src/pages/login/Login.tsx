@@ -59,7 +59,7 @@ export default class Login extends React.Component<ILoginProps> {
                       Forgot password?
                     </a>
                   </div>
-                  <div className="mb-2">
+                  {/* <div className="mb-2">
                     <button
                       type="button"
                       className="btn btn-block btn-google auth-form-btn"
@@ -67,7 +67,7 @@ export default class Login extends React.Component<ILoginProps> {
                       <i className="mdi mdi-google mr-2"></i>Connect using
                       Google
                     </button>
-                  </div>
+                  </div> */}
                 </Form>
               </div>
             </div>

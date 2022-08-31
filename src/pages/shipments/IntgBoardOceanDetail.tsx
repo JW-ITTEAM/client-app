@@ -1,31 +1,31 @@
+import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ActivityLog } from "../../components/activityLog/ActivityLog";
 import ActivityLogEvent from "../../components/activityLog/ActivityLogEvent";
+import { useStore } from "../../stores/store";
 import axiosConn from "../../utils/ApiConnection";
 
 export interface IIntgBoardOceanDetailProps {}
 
-export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
+function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
+  const { shipmentStore } = useStore();
   const [data, setData]: any = useState();
   const location: any = useLocation();
   const colspan_val = 2;
 
   useEffect(() => {
-    axiosConn
-      .get(
-        "/api/Shipments/getOceanImportDetail/" +
-          encodeURIComponent(location.state.RMH_Id)
-      )
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
+    axiosConn.OceanImports.detail(location.state.RMH_Id).then((response) => {
+      setData(response);
+      console.log(response);
+    });
   }, []);
 
   if (!data) return <></>;
   return (
     <div>
+      {/* <h2>{shipmentStore.title}</h2>
+      <button onClick={shipmentStore.setTitle}>Add exlamation</button> */}
       <div className="page-header">
         <h3
           className="page-title"
@@ -46,12 +46,6 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
             <div className="card-body">
               <table className="table">
                 <tbody>
-                  {/* <tr>
-                    <td colSpan={colspan_val}>MASTER B/L NO</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      {data.f_MBLNo}
-                    </td>
-                  </tr> */}
                   <tr>
                     <td colSpan={colspan_val}>SHIPPER</td>
                     <td colSpan={colspan_val} className="text-right">
@@ -98,12 +92,6 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
             <div className="card-body">
               <table className="table">
                 <tbody>
-                  {/* <tr>
-                    <td colSpan={colspan_val}>HOUSE B/L NO</td>
-                    <td colSpan={colspan_val} className="text-right">
-                      {data.f_HBLNo}
-                    </td>
-                  </tr> */}
                   <tr>
                     <td style={{ width: "25%" }}>CUSTOMER</td>
                     <td style={{ width: "25%" }} className="text-right">
@@ -258,13 +246,15 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>12345</td>
-                    <td>1235</td>
-                    <td>40HQ</td>
-                    <td>20</td>
-                    <td>CNTS</td>
-                  </tr>
+                  {data.vM_CONTAINERS.map((cont: any) => (
+                    <tr key={cont.f_ID}>
+                      <td>{cont.f_ContainerNo}</td>
+                      <td>{cont.f_SealNo}</td>
+                      <td>{cont.f_ConType}</td>
+                      <td>20</td>
+                      <td>CNTS</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -316,3 +306,5 @@ export default function IntgBoardDetail(props: IIntgBoardOceanDetailProps) {
     </div>
   );
 }
+
+export default observer(IntgBoardDetail);

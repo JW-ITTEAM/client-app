@@ -3,13 +3,16 @@ import * as ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { store, StoreContext } from "./stores/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <BrowserRouter basename="/">
-    <App />
+    <StoreContext.Provider value={store}>
+      <App />
+    </StoreContext.Provider>
   </BrowserRouter>
 );
 

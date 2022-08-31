@@ -1,17 +1,21 @@
-import * as React from "react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useStore } from "../../stores/store";
 import axiosConn from "../../utils/ApiConnection";
 
 export interface IIntgBoardProps {}
 
 export default function IntgBoard(props: IIntgBoardProps) {
-  const [oims, setOims] = React.useState([]);
+  const [oims, setOims] = useState([]);
   const history = useHistory();
+  const { commonStore } = useStore();
 
   useEffect(() => {
-    axiosConn.get("/api/Shipments/getOceanImportList").then((response) => {
-      setOims(response.data);
+    commonStore.setLoading(true);
+    axiosConn.OceanImports.list().then((response) => {
+      setOims(response);
+      commonStore.setLoading(false);
     });
   }, []);
 
