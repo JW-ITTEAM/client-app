@@ -1,8 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Spinner from "./pages/shared/Spinner";
-
 export interface IAppRoutesProps {}
 
 const OceanImport = lazy(() => import("./pages/shipments/oim/OceanImport"));
@@ -21,11 +19,12 @@ const ShipmentIntgBoardOceanDetail = lazy(
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
 const BasicTable = lazy(() => import("./pages/tables/BasicTable"));
 const Login = lazy(() => import("./pages/login/Login"));
+const Register = lazy(() => import("./pages/login/Register"));
 
 export default class AppRoutes extends React.Component<IAppRoutesProps> {
   public render() {
     return (
-      <Suspense fallback={<Spinner />}>
+      <Suspense>
         <Switch>
           <Route exact path="/shipments/oim" component={OceanImport} />
           <Route path="/shipments/oim_detail/" component={OceanImportDetail} />
@@ -44,6 +43,7 @@ export default class AppRoutes extends React.Component<IAppRoutesProps> {
           />
           <Route path="/tables/basic-table" component={BasicTable} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Redirect to="/dashboard" />
         </Switch>
       </Suspense>

@@ -24,13 +24,14 @@ export default class CommonStore {
 
   fullPageControl = (pathname: string) => {
     window.scrollTo(0, 0);
-    const fullPageLayoutRoutes = ["/login"];
+    const fullPageLayoutRoutes = ["/login", "/register"];
     for (let i = 0; i < fullPageLayoutRoutes.length; i++) {
       if (pathname === fullPageLayoutRoutes[i]) {
         this.setFullLayout(true);
         document
           .querySelector(".page-body-wrapper")
           ?.classList.add("full-page-wrapper");
+        break;
       } else {
         this.setFullLayout(false);
         document

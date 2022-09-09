@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 
 export interface ILoadSpinnerProps {
@@ -6,6 +7,7 @@ export interface ILoadSpinnerProps {
 }
 
 export function LoadSpinner(props: ILoadSpinnerProps) {
+  console.log("LoadSpinner value : " + props.isLoading);
   return (
     <div>
       {props.isLoading ? (

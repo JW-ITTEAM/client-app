@@ -1,23 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { LoadSpinner } from "../../components/loadSpinner/LoadSpinner";
 import { useStore } from "../../stores/store";
-import axiosConn from "../../utils/ApiConnection";
 
 export interface IIntgBoardProps {}
 
-export default function IntgBoard(props: IIntgBoardProps) {
-  const [oims, setOims] = useState([]);
+function IntgBoard(props: IIntgBoardProps) {
   const history = useHistory();
-  const { commonStore } = useStore();
+  const { shipmentStore } = useStore();
 
   useEffect(() => {
-    commonStore.setLoading(true);
-    axiosConn.OceanImports.list().then((response) => {
-      setOims(response);
-      commonStore.setLoading(false);
-    });
-  }, []);
+    shipmentStore.loadOceanImportList();
+  }, [shipmentStore]);
 
   const fetchDetail = (RMH_Id: string) => {
     history.push({
@@ -28,6 +23,7 @@ export default function IntgBoard(props: IIntgBoardProps) {
 
   return (
     <div>
+      <LoadSpinner isLoading={shipmentStore.isLoading} />
       <div className="page-header">
         <h3 className="page-title">SHIPMENTS</h3>
         <nav aria-label="breadcrumb">
@@ -76,7 +72,7 @@ export default function IntgBoard(props: IIntgBoardProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    {oims.map((data: any) => (
+                    {shipmentStore.oims.map((data: any) => (
                       <tr
                         key={data.f_RMH_ID}
                         onClick={() => fetchDetail(`${data.f_RMH_ID}`)}
@@ -105,3 +101,5 @@ export default function IntgBoard(props: IIntgBoardProps) {
     </div>
   );
 }
+
+export default observer(IntgBoard);
